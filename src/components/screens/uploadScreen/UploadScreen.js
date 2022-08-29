@@ -21,7 +21,7 @@ const UploadScreen = () => {
 
             fd.append("file", file);
 
-            const res = await axios.post("http://localhost:3003/upload", fd);
+            const res = await axios.post("https://youtube-clone-rajes.herokuapp.com/upload", fd);
 
             setFiles(files.concat(res.data));
             console.log(res.data);
@@ -29,14 +29,14 @@ const UploadScreen = () => {
     }
 
     const fetchFiles = useCallback(async () => {
-        const res = await axios.get("http://localhost:3003/files");
+        const res = await axios.get("https://youtube-clone-rajes.herokuapp.com/files");
         setFiles(res.data);
     }, []);
 
     const removeFile = useCallback(
         async (filename, index) => {
             const res = await axios.delete(
-                `http://localhost:3003/delete/${filename}`
+                `https://youtube-clone-rajes.herokuapp.com/delete/${filename}`
             );
             if (res.status === 200) {
                 let temp = [...files];
@@ -60,7 +60,7 @@ const UploadScreen = () => {
                 <Col>
                     <form onSubmit={handleSubmit} encType='multipart/form-data'>
                         <input type='file' name='file' className='p-2 rounded' onChange={handleFile} required />
-                        <button className='upload__button' type='submit'>
+                        <button className='btn btn-primary ' type='submit'>
                             UPLOAD
                         </button>
                     </form>
@@ -73,22 +73,15 @@ const UploadScreen = () => {
                             <Row>
                                 <Col  >
                                     <video width={320} height={240} controls>
-                                        <source src={`http://localhost:3003/read/${file.filename}`} type='video/mp4' />
+                                        <source src={`https://youtube-clone-rajes.herokuapp.com/read/${file.filename}`} type='video/mp4' />
                                     </video>
-                                    {/* <iframe src={`http://localhost:3003/read/${file.filename}`}
-                                        frameBorder={0}
-                                        title={file.filename}
-                                        allowFullScreen
-                                        width='500'
-                                        height='300'
-                                    ></iframe> */}
-                                    {/* <ReactPlayer controls url={`http://localhost:3003/read/${file.filename}`} /> */}
                                     <p className='text-center'>{file.filename}</p>
                                     <button
                                         type="button"
                                         onClick={() => {
                                             removeFile(file.filename, i);
                                         }}
+                                        className='upload__button'
                                     >
                                         remove
                                     </button>

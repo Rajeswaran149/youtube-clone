@@ -15,7 +15,7 @@ const Photo = () => {
    return (
       <img
          src={photoURL}
-         alt='avatar'
+         alt={require('../../image/avatar.png')}
       ></img>
    )
 }
@@ -70,7 +70,7 @@ const Header = ({ handleToggleSidebar }) => {
                   <Photo />
                   :
                   <img
-                     src=''
+                     src={require('../../image/avatar.png')}
                      alt='avatar'
                   ></img>
             }
