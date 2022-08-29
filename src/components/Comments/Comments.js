@@ -48,18 +48,13 @@ const _comments = comments?.map(comment=>comment.snippet.topLevelComment.snippet
     <div className="comments">
       <p>{totalComments} Comments</p>
       <div className="comments__form d-flex w-100 my-2">
-        {/* <img
-          src={photoURL}
-            alt="avatar"
-           className="rounded-circle mr-3">
-          
-        </img> */}
+        
         {
                login ?
                   <Photo/> 
                   :
                   <img
-                     src=''
+                     src={require('../../image/avatar.png')}
                      alt='avatar'
                   ></img>
             }

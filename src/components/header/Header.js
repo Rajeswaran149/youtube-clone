@@ -15,7 +15,7 @@ const Photo = () => {
    return (
       <img
          src={photoURL}
-         alt={require('../../image/avatar.png')}
+         alt=""
       ></img>
    )
 }
